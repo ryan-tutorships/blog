@@ -1,0 +1,74 @@
+@layer base, starlight, theme, components, utilities;
+
+@import "@astrojs/starlight-tailwind";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  /* Your preferred text font. Starlight uses a system font stack by default. */
+  --font-sans: "Atkinson Hyperlegible";
+  /* Your preferred code font. Starlight uses system monospace fonts by default. */
+  --font-mono: "IBM Plex Mono";
+
+  /* Generated accent color palettes. */
+  --color-accent-200: #d6c89d;
+  --color-accent-600: #614d00;
+  --color-accent-900: #3e3100;
+  --color-accent-950: #2d2300;
+  /* Generated gray color palettes. */
+  --color-gray-100: #f6f6f6;
+  --color-gray-200: #eeeeee;
+  --color-gray-300: #c2c2c2;
+  --color-gray-400: #8b8b8b;
+  --color-gray-500: #585858;
+  --color-gray-700: #383838;
+  --color-gray-800: #272727;
+  --color-gray-900: #181818;
+}
+
+:root {
+  --yellow-hsl: 48, 95%, 58%;
+  --overlay-gold: hsla(var(--yellow-hsl), 0.1);
+}
+
+:root[data-theme="light"] {
+  --yellow-hsl: 45, 92%, 52%;
+  --sl-hue-accent: 46;
+}
+
+[data-has-hero] .page {
+  background:
+    linear-gradient(215deg, var(--overlay-gold), transparent 40%),
+    radial-gradient(var(--overlay-gold), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
+    radial-gradient(var(--overlay-gold), transparent 65%) no-repeat 50% calc(100% + 20rem) / 60rem
+      30rem;
+}
+
+[data-has-hero] header {
+  border-bottom: 1px solid hsla(var(--yellow-hsl), 0.2);
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+[data-has-hero] .hero > img {
+  filter: drop-shadow(0 0 3rem var(--overlay-gold));
+}
+
+[data-has-hero] :is(.card, .sl-link-card, .hero .actions a, .social-icons a, .pagination-links a) {
+  border-color: hsla(var(--yellow-hsl), 0.32);
+  box-shadow:
+    0 0 1rem hsla(var(--yellow-hsl), 0.12),
+    0 0 2rem hsla(var(--yellow-hsl), 0.08);
+  transition:
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+[data-has-hero]
+  :is(.card, .sl-link-card, .hero .actions a, .social-icons a, .pagination-links a):hover {
+  border-color: hsla(var(--yellow-hsl), 0.48);
+  box-shadow:
+    0 0 1.25rem hsla(var(--yellow-hsl), 0.22),
+    0 0 2.25rem hsla(var(--yellow-hsl), 0.14);
+}
