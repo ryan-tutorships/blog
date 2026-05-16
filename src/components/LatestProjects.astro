@@ -1,0 +1,153 @@
+---
+import { getCollection } from "astro:content";
+
+const projectEntries = await getCollection("docs", ({ id, data }) => {
+  return id.startsWith("projects/") && id !== "projects/index" && !data.draft;
+});
+
+const projects = projectEntries
+  .sort((a, b) => {
+    const aTime = a.data.data?.getTime() ?? 0;
+    const bTime = b.data.data?.getTime() ?? 0;
+    return bTime - aTime || a.data.title.localeCompare(b.data.title, "pt-BR");
+  })
+  .slice(0, 12);
+
+const dateFormatter = new Intl.DateTimeFormat("pt-BR", {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+---
+
+{
+  projects.length > 0 ? (
+    <section class="latest-projects" aria-label="Projetos mais recentes">
+      {projects.map((project) => {
+        const date = project.data.data ? dateFormatter.format(project.data.data) : undefined;
+
+        return (
+          <article class="project-card">
+            <a href={`/${project.id}/`} class="project-title">
+              {project.data.title}
+            </a>
+            {project.data.description && <p class="project-description">{project.data.description}</p>}
+            <dl class="project-meta">
+              {project.data.autor && (
+                <>
+                  <dt>Autor</dt>
+                  <dd>
+                    {project.data.autorUrl ? (
+                      <a href={project.data.autorUrl} rel="author external">
+                        {project.data.autor}
+                      </a>
+                    ) : (
+                      project.data.autor
+                    )}
+                  </dd>
+                </>
+              )}
+              {project.data.turma && (
+                <>
+                  <dt>Turma</dt>
+                  <dd>{project.data.turma}</dd>
+                </>
+              )}
+              {date && (
+                <>
+                  <dt>Data</dt>
+                  <dd>{date}</dd>
+                </>
+              )}
+              {project.data.canonicalUrl && (
+                <>
+                  <dt>Original</dt>
+                  <dd>
+                    <a href={project.data.canonicalUrl} rel="canonical external">
+                      {new URL(project.data.canonicalUrl).hostname}
+                    </a>
+                  </dd>
+                </>
+              )}
+            </dl>
+          </article>
+        );
+      })}
+    </section>
+  ) : (
+    <p class="empty-projects">
+      Nenhum projeto publicado ainda. Os próximos posts enviados pelos alunos aparecerão aqui em
+      ordem de publicação.
+    </p>
+  )
+}
+
+<style>
+  .latest-projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .project-card {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: var(--sl-color-black);
+  }
+
+  .project-title {
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-lg);
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  .project-title:hover {
+    color: var(--sl-color-text-accent);
+  }
+
+  .project-description {
+    margin-top: 0.5rem;
+    color: var(--sl-color-gray-2);
+    line-height: 1.5;
+  }
+
+  .project-meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.35rem 0.75rem;
+    margin: 1rem 0 0;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+  }
+
+  .project-meta dt {
+    color: var(--sl-color-gray-2);
+    font-weight: 600;
+  }
+
+  .project-meta dd {
+    margin: 0;
+  }
+
+  .project-meta a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+
+  .project-meta a:hover {
+    text-decoration: underline;
+  }
+
+  .empty-projects {
+    padding: 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    color: var(--sl-color-gray-2);
+    background: var(--sl-color-black);
+  }
+</style>
