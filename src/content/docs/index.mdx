@@ -1,40 +1,46 @@
 ---
-title: Mostre que você é o melhor aluno da pós!
-description: Transforme o aprendizado em progresso visível – resumos, projetos e escrita pública — tudo com comprovação, revisão semanal e recompensas em badges.
+title: Lab Pós Mobile
+description: Projetos, estudos e aprendizados construídos pelos alunos da pós.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Revisões em até 72h. Pontos são append-only.
+  tagline: Projetos, estudos e aprendizados construídos pelos alunos da pós.
   image:
     dark: ../../assets/logo_dark_scheme.png
     light: ../../assets/logo_light_scheme.png
   actions:
-    - text: Abrir Leaderboard
+    - text: Explorar Vitrine
       link: /leaderboard/
       icon: right-arrow
-    - text: Enviar Comprovante
+    - text: Enviar Produção
       link: /submit/
       icon: add-document
 ---
 
 import { Card, CardGrid, LinkButton } from "@astrojs/starlight/components";
 
+O Lab Pós Mobile é o espaço público da pós-graduação para registrar a evolução técnica dos alunos:
+projetos, artigos, resumos, experimentos, contribuições e participação na comunidade.
+
+Construa seu portfólio durante a pós. Mostre sua evolução técnica na prática, com evidências
+claras do que você estudou, construiu e publicou.
+
 ## Como funciona
 
 <CardGrid stagger>
-  <Card title="1) Faça o trabalho" icon="open-book">
-    Resuma um artigo, evolua um projeto pessoal, contribua em OSS, ou publique um post técnico com conteúdo.
+  <Card title="1) Aprenda e construa" icon="open-book">
+    Resuma um artigo, evolua um projeto pessoal, contribua em OSS ou publique um estudo técnico com conteúdo.
   </Card>
 
-<Card title="2) Envie a comprovação" icon="seti:image">
-  Submeta um link + screenshot. Uma evidência por submissão, com dedupe por URL quando aplicável.
+<Card title="2) Publique com evidência" icon="seti:image">
+  Envie um link + screenshot. Uma evidência por submissão, com dedupe por URL quando aplicável.
 </Card>
 
-  <Card title="3) Ganhe pontos e badges" icon="approve-check">
-    Pontos têm limite semanal para evitar farming. Badges destacam consistência, shipping e impacto.
+  <Card title="3) Registre sua evolução" icon="approve-check">
+    O histórico público destaca consistência, entrega e impacto sem transformar aprendizado em competição infantil.
   </Card>
 </CardGrid>
 
-## O que vale pontos
+## O que entra na vitrine
 
 <CardGrid stagger>
   <Card title="Resumos" icon="open-book">
@@ -47,7 +53,7 @@ import { Card, CardGrid, LinkButton } from "@astrojs/starlight/components";
 </Card>
 
 <Card title="LinkedIn" icon="linkedin">
-  Post com substância: problema → abordagem → resultado. Sem “post vazio” valendo ponto.
+  Publicação com substância: problema → abordagem → resultado. Sem “post vazio” valendo registro.
 </Card>
 
 <Card title="Comunidade / Mentoria" icon="comment">
@@ -62,12 +68,13 @@ import { Card, CardGrid, LinkButton } from "@astrojs/starlight/components";
 ## Regras rápidas
 
 - **Revisão:** em até **72h**.
-- **Sem edição silenciosa:** totais vêm de um **ledger append-only**.
+- **Sem edição silenciosa:** registros vêm de um **ledger append-only**.
+- **Tom:** sério, técnico e motivador. A vitrine valoriza evolução, não comparação vazia.
 
 ## Comece agora
 
 <CardGrid>
   <LinkButton icon="right-arrow" href="/leaderboard">
-    Ver o Leaderboard
+    Ver a Vitrine
   </LinkButton>
 </CardGrid>

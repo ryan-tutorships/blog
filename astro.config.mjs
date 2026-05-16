@@ -10,13 +10,23 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Tutoria UTFPR",
+      title: "Lab Pós Mobile",
       defaultLocale: "pt-BR",
-      social: [],
+      social: [
+        {
+          icon: "github",
+          href: "https://github.com/ryan-tutorships/blog",
+          label: "GitHub",
+        },
+      ],
       customCss: ["./src/styles/global.css"],
       sidebar: [
         {
-          label: "Leaderboard",
+          label: "Projetos dos Alunos",
+          autogenerate: { directory: "projects" },
+        },
+        {
+          label: "Vitrine",
           autogenerate: { directory: "leaderboard" },
         },
         {
