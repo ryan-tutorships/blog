@@ -1,0 +1,8 @@
+---
+import DefaultHead from "@astrojs/starlight/components/Head.astro";
+
+const { canonicalUrl } = Astro.locals.starlightRoute.entry.data;
+---
+
+<DefaultHead />
+{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}

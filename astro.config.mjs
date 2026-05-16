@@ -30,6 +30,10 @@ export default defineConfig({
           label: "GitHub",
         },
       ],
+      components: {
+        Head: "./src/components/Head.astro",
+        PageTitle: "./src/components/PageTitle.astro",
+      },
       customCss: ["./src/styles/global.css"],
       sidebar: [
         {

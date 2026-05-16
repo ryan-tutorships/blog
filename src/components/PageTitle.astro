@@ -1,0 +1,89 @@
+---
+const { title, autor, autorUrl, turma, data, canonicalUrl } = Astro.locals.starlightRoute.entry.data;
+
+const formattedDate =
+  data instanceof Date
+    ? new Intl.DateTimeFormat("pt-BR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC",
+      }).format(data)
+    : undefined;
+
+const hasCredit = autor || turma || formattedDate || canonicalUrl;
+---
+
+<h1 id="_top">{title}</h1>
+
+{
+  hasCredit && (
+    <div class="student-credit" aria-label="Crédito do conteúdo">
+      <p>
+        {autor && (
+          <>
+            Por{" "}
+            {autorUrl ? (
+              <a href={autorUrl} rel="author external">
+                {autor}
+              </a>
+            ) : (
+              <strong>{autor}</strong>
+            )}
+          </>
+        )}
+        {turma && <span>{autor ? " · " : ""}{turma}</span>}
+        {formattedDate && <span>{autor || turma ? " · " : ""}{formattedDate}</span>}
+      </p>
+      {canonicalUrl && (
+        <p>
+          Publicado originalmente em{" "}
+          <a href={canonicalUrl} rel="canonical external">
+            {new URL(canonicalUrl).hostname}
+          </a>
+        </p>
+      )}
+    </div>
+  )
+}
+
+<style>
+  @layer starlight.core {
+    h1 {
+      margin-top: 1rem;
+      font-size: var(--sl-text-h1);
+      line-height: var(--sl-line-height-headings);
+      font-weight: 600;
+      color: var(--sl-color-white);
+    }
+
+    .student-credit {
+      margin-top: 0.75rem;
+      color: var(--sl-color-gray-3);
+      font-size: var(--sl-text-sm);
+      line-height: 1.5;
+    }
+
+    .student-credit p {
+      margin: 0;
+    }
+
+    .student-credit p + p {
+      margin-top: 0.25rem;
+    }
+
+    .student-credit strong {
+      color: var(--sl-color-gray-2);
+      font-weight: 600;
+    }
+
+    .student-credit a {
+      color: var(--sl-color-text-accent);
+      text-decoration: none;
+    }
+
+    .student-credit a:hover {
+      text-decoration: underline;
+    }
+  }
+</style>
