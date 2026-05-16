@@ -5,11 +5,22 @@ import starlight from "@astrojs/starlight";
 import tailwindcss from "@tailwindcss/vite";
 
 import cloudflare from "@astrojs/cloudflare";
-
+import starlightGiscus from "starlight-giscus";
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
+      plugins: [
+        starlightGiscus({
+          repo: "ryan-tutorships/blog",
+          repoId: "R_kgDOSR7oPQ",
+          category: "General",
+          categoryId: "DIC_kwDOSR7oPc4C9NcC",
+          reactions: true,
+          mapping: "pathname",
+          inputPosition: "top",
+        }),
+      ],
       title: "Lab Pós Mobile",
       defaultLocale: "pt-BR",
       social: [
@@ -24,10 +35,6 @@ export default defineConfig({
         {
           label: "Projetos dos Alunos",
           autogenerate: { directory: "projects" },
-        },
-        {
-          label: "Vitrine",
-          autogenerate: { directory: "leaderboard" },
         },
         {
           label: "Tutoria",
