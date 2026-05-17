@@ -13,7 +13,7 @@ configurações, dependências, estilos globais ou páginas que não sejam suas.
 ### 1. Faça um fork
 
 1. Abra o repositório no GitHub.
-2. Clique em **Fork**.
+2. Clique em [Fork.](https://github.com/ryan-tutorships/blog/fork)
 3. Crie o fork na sua conta.
 4. Clone o seu fork:
 
@@ -32,7 +32,7 @@ git checkout -b projeto/joao-silva-app-financeiro
 
 ### 3. Adicione seu post
 
-Crie um arquivo `.mdx` dentro de:
+Crie um arquivo `.mdx` ou `.md` dentro de:
 
 ```text
 src/content/docs/projects/2026/
@@ -41,7 +41,7 @@ src/content/docs/projects/2026/
 Use um nome simples, em minúsculas, sem espaços:
 
 ```text
-src/content/docs/projects/2026/joao-silva-app-financeiro.mdx
+src/content/docs/projects/2026/joao-silva-app-financeiro.md
 ```
 
 Modelo mínimo:
