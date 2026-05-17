@@ -2,7 +2,7 @@
 title: Pós-graduação para Tech People
 description: Guia sobre escolhas entre pós lato sensu, mestrado e doutorado para pessoas de tecnologia.
 autor: Ryan Machado
-autorUrl: https://blog.ryanmac.dev/about/
+autorUrl: https://blog.ryanmac.dev/
 turma: Pós Mobile 2026
 data: 2026-05-16
 canonicalUrl: https://blog.ryanmac.dev/pt-br/guides/pos-devs/
@@ -25,4 +25,4 @@ técnica e reaproveitável para outras pessoas da comunidade.
 
 Leia o post completo em:
 
-https://blog.ryanmac.dev/pt-br/guides/pos-devs/
+<https://blog.ryanmac.dev/pt-br/guides/pos-devs/>
